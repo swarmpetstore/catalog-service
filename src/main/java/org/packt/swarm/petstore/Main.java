@@ -15,9 +15,11 @@ public class Main {
                 })
                 .dataSource("CatalogDS", (ds) -> {
                     ds.driverName("postgres");
-                    ds.connectionUrl("jdbc:postgresql://172.30.81.105/postgres");
-                    ds.userName("userR8W");
-                    ds.password("g1GxalbwIkuYA0Ha");
+                    ds.connectionUrl("jdbc:postgresql://"
+                            + System.getenv("POSTGRESQL_HOST")
+                            + "/"+  System.getenv("POSTGRESQL_SCHEMA"));
+                    ds.userName(System.getenv("POSTGRESQL_USER"));
+                    ds.password(System.getenv("POSTGRESQL_PASSWORD"));
                 });
         
         Swarm swarm = new Swarm();
