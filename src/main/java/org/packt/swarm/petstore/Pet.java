@@ -1,25 +1,19 @@
 package org.packt.swarm.petstore;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Pet")
 @NamedQueries({
-        @NamedQuery(name="Pet.findById",
-                query="SELECT p FROM Pet p WHERE p.id = :id"),
+        @NamedQuery(name="Pet.findByName",
+                query="SELECT p FROM Pet p WHERE p.name = :name"),
 })
 public class Pet {
 
     //4
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_sequence")
+    @SequenceGenerator(name = "pet_sequence", sequenceName = "pet_id_seq")
     private int id;
 
     //5

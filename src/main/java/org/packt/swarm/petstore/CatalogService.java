@@ -3,9 +3,9 @@ package org.packt.swarm.petstore;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 @ApplicationScoped
 public class CatalogService {
@@ -15,10 +15,12 @@ public class CatalogService {
     @PersistenceContext(unitName = "CatalogPU")
     private EntityManager em;
 
-    private Random random = new Random();
-
-    public Pet searchById(int id) {
-        return em.createNamedQuery("Pet.findById", Pet.class).setParameter("id",id).getResultList().get(0);
+    public Pet searchByName(String name) {
+        return em.createNamedQuery("Pet.findByName", Pet.class).setParameter("name",name).getResultList().get(0);
     }
 
+    @Transactional
+    public void add(Pet pet){
+        em.persist(pet);
+    }
 }
