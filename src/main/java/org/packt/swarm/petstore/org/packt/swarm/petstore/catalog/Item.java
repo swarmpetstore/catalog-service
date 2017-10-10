@@ -1,19 +1,21 @@
-package org.packt.swarm.petstore;
+package org.packt.swarm.petstore.org.packt.swarm.petstore.catalog;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Pet")
+@Table(name = "item")
 @NamedQueries({
-        @NamedQuery(name="Pet.findByName",
-                query="SELECT p FROM Pet p WHERE p.name = :name"),
+        @NamedQuery(name="Item.findByName",
+                query="SELECT i FROM Item i WHERE i.name = :name"),
+        @NamedQuery(name="Item.findAll",
+                query="SELECT i FROM Item i"),
 })
-public class Pet {
+public class Item {
 
     //4
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_sequence")
-    @SequenceGenerator(name = "pet_sequence", sequenceName = "pet_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
+    @SequenceGenerator(name = "item_sequence", sequenceName = "item_id_seq")
     private int id;
 
     //5
