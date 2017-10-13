@@ -1,4 +1,4 @@
-package org.packt.swarm.petstore.org.packt.swarm.petstore.catalog;
+package org.packt.swarm.petstore.catalog;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

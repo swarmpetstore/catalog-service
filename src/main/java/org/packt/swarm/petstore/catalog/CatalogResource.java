@@ -1,4 +1,4 @@
-package org.packt.swarm.petstore.org.packt.swarm.petstore.catalog;
+package org.packt.swarm.petstore.catalog;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

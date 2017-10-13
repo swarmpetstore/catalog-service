@@ -1,4 +1,4 @@
-package org.packt.swarm.petstore.org.packt.swarm.petstore.catalog;
+package org.packt.swarm.petstore.catalog;
 
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
