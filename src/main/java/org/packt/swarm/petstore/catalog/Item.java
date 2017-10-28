@@ -1,5 +1,7 @@
 package org.packt.swarm.petstore.catalog;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
     @SequenceGenerator(name = "item_sequence", sequenceName = "item_id_seq")
+    @JsonIgnore
     private int id;
 
     //5
