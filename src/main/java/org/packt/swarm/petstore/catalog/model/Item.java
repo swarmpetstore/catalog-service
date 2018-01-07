@@ -1,4 +1,4 @@
-package org.packt.swarm.petstore.catalog;
+package org.packt.swarm.petstore.catalog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -7,8 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "item")
 @NamedQueries({
-        @NamedQuery(name="Item.findByName",
-                query="SELECT i FROM Item i WHERE i.name = :name"),
+        @NamedQuery(name="Item.findByItemId",
+                query="SELECT i FROM Item i WHERE i.itemId = :itemId"),
         @NamedQuery(name="Item.findAll",
                 query="SELECT i FROM Item i"),
 })

@@ -1,5 +1,7 @@
 package org.packt.swarm.petstore.catalog;
 
+import org.packt.swarm.petstore.catalog.model.Item;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,26 +17,36 @@ public class CatalogResource {
     @GET
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Item> getAll() {
-        return catalogService.getAll();
+    public Response getAll() {
+        try {
+            List<Item> items = catalogService.getAll();
+            return Response.ok(items).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
     }
 
     @GET
-    @Path("item/{name}")
+    @Path("item/{itemId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Item searchByName(@PathParam("name") String name) {
-        return catalogService.searchByName(name);
+    public Response searchByName(@PathParam("itemId") String itemId) {
+        try {
+            Item item = catalogService.searchByItemId(itemId);
+            return Response.ok(item).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        }
     }
 
     @POST
     @Path("item")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addNew(Item pet){
+    public Response addNew(Item item) {
         try {
-            catalogService.add(pet);
-            return Response.ok(pet).build();
-        } catch(Exception e){
+            catalogService.add(item);
+            return Response.ok().build();
+        } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }

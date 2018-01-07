@@ -1,5 +1,7 @@
 package org.packt.swarm.petstore.catalog;
 
+import org.packt.swarm.petstore.catalog.model.Item;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,8 +18,8 @@ public class CatalogService {
     @PersistenceContext(unitName = "CatalogPU")
     private EntityManager em;
 
-    public Item searchByName(String name) {
-        return em.createNamedQuery("Item.findByName", Item.class).setParameter("name",name).getResultList().get(0);
+    public Item searchByItemId(String itemId) {
+        return em.createNamedQuery("Item.findByItemId", Item.class).setParameter("itemId",itemId).getResultList().get(0);
     }
 
     public List<Item> getAll() {
