@@ -21,6 +21,9 @@ public class Item {
     @JsonIgnore
     private int id;
 
+    @Column(name = "item_id")
+    private String itemId;
+
     //5
     @Column(length = 30)
     private String name;
@@ -36,6 +39,14 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getName() {
